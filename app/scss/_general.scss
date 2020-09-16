@@ -1,0 +1,36 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Muli", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: black;
+}
+
+.wrapper {
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.game {
+  width: 180vh;
+  height: 90vh;
+  border: 1px solid white;
+  background-color: black;
+}
