@@ -5,11 +5,16 @@ import move from "./logic/move";
 import playerControls from "./logic/playerControls";
 import spawn from "./logic/spawn";
 
+let gameState = {
+  paused: false,
+};
+
 // object with all entities
-let entities = {};
-entities.player = new Player({});
-entities.playerShots = [];
-entities.enemies = [];
+let entities = {
+  player: new Player({}),
+  playerShots: [],
+  enemies: [],
+};
 
 playerControls(entities.player);
 
@@ -20,11 +25,11 @@ let prevTime = 0;
 function gameLoop(time) {
   requestAnimationFrame(gameLoop);
   // f = amount of frames (16.666... ms)
-  if (isNaN(time)) time = 0;
   f = ((time - prevTime) * 60) / 1000;
+  if (isNaN(f)) f = 1;
   prevTime = time;
 
-  spawn(entities, time);
+  spawn(entities, f * 16);
   move(entities, f);
   draw(entities, f);
 }
