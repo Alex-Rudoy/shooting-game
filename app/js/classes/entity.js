@@ -19,3 +19,10 @@ Entity.prototype.draw = function () {
   ctx.drawImage(this.image, -this.image.width / 2, -this.image.height / 2); // draw image offset so its center is at x,y
   ctx.setTransform(1, 0, 0, 1, 0, 0); // restore default transform
 };
+
+Entity.prototype.collisionDetection = function (obj) {
+  if (Math.sqrt((this.x - obj.x) ** 2 + (this.y - obj.y) ** 2) < this.hitbox + obj.hitbox) {
+    return true;
+  }
+  return false;
+};
