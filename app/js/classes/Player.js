@@ -1,3 +1,4 @@
+import { ctx } from "../logic/draw";
 import images from "../logic/images";
 import Entity from "./Entity";
 
@@ -10,8 +11,8 @@ export default class Player extends Entity {
     this.image = images.player;
 
     this.hitbox = 20;
-    this.maxhp = 3;
-    this.hp = 3;
+    this.maxHP = 3;
+    this.HP = 3;
 
     this.turnAngle = 0;
     this.isShooting = false;
@@ -33,5 +34,12 @@ export default class Player extends Entity {
     if (this.x > 1560) this.x = 1560;
     if (this.y < 40) this.y = 40;
     if (this.y > 860) this.y = 860;
+  }
+
+  drawHPBar() {
+    ctx.strokeStyle = "green";
+    ctx.fillStyle = "green";
+    ctx.strokeRect(this.x - 50, this.y - 70, 100, 10);
+    ctx.fillRect(this.x - 50, this.y - 70, (100 / this.maxHP) * this.HP, 10);
   }
 }

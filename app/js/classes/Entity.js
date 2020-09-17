@@ -1,3 +1,5 @@
+import { ctx } from "../logic/draw";
+
 export default class Entity {
   constructor(args) {
     this.x = args.x || 0;
@@ -11,9 +13,6 @@ Entity.prototype.move = function (angle, distance) {
   this.y += Math.sin(angle) * distance;
 };
 
-/** @type {CanvasRenderingContext2D} */
-let ctx = document.querySelector(".game").getContext("2d");
-
 Entity.prototype.draw = function () {
   ctx.setTransform(1, 0, 0, 1, this.x, this.y); // set position of image center
   ctx.rotate(this.turnAngle); // rotate
@@ -26,4 +25,11 @@ Entity.prototype.collisionDetection = function (obj) {
     return true;
   }
   return false;
+};
+
+Entity.prototype.takeDamage = function () {
+  this.HP--;
+  if (this.HP <= 0) {
+    this.toDestroy = true;
+  }
 };

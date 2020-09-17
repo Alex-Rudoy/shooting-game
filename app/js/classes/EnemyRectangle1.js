@@ -11,8 +11,8 @@ export default class EnemyRectangle1 extends Enemy {
     this.turnAngle = 0;
     this.speed = 2;
 
-    this.maxhp = 2;
-    this.hp = 2;
+    this.maxHP = 1;
+    this.HP = 1;
   }
 }
 

@@ -1,6 +1,6 @@
 let canvas = document.querySelector(".game");
 /** @type {CanvasRenderingContext2D} */
-let ctx = canvas.getContext("2d");
+export let ctx = canvas.getContext("2d");
 
 export default function draw(entities, f) {
   let { player, playerShots, enemies } = entities;
@@ -11,4 +11,8 @@ export default function draw(entities, f) {
   player.draw(player.image, player.x, player.y, player.turnAngle);
 
   enemies.forEach((enemy) => enemy.draw());
+
+  player.drawHPBar();
+
+  enemies.forEach((enemy) => enemy.drawHPBar());
 }
