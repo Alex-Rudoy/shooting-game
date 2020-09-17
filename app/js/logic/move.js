@@ -4,13 +4,17 @@ export default function move(entities, f) {
 
   playerShots.forEach((shot) => {
     shot.move(shot.turnAngle, shot.speed * f);
+
+    // collision with enemies
     enemies.forEach((enemy) => {
       if (shot.collisionDetection(enemy)) {
         shot.toDestroy = true;
-        enemy.toDestroy = true;
+        enemy.takeDamage();
       }
     });
   });
+
+  // remove destroyed player shots
   entities.playerShots = playerShots.filter(
     (shot) => shot.x > -50 && shot.x < 1650 && shot.y > -50 && shot.y < 950 && !shot.toDestroy
   );

@@ -8,7 +8,10 @@ export default class Player extends Entity {
     this.x = 800;
     this.y = 450;
     this.image = images.player;
+
     this.hitbox = 20;
+    this.maxhp = 3;
+    this.hp = 3;
 
     this.turnAngle = 0;
     this.isShooting = false;

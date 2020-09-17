@@ -12,3 +12,10 @@ Enemy.prototype.getPlayerPosition = function (player) {
     Math.atan2(player.y - this.y, player.x - this.x),
   ];
 };
+
+Enemy.prototype.takeDamage = function () {
+  this.hp--;
+  if (this.hp <= 0) {
+    this.toDestroy = true;
+  }
+};
