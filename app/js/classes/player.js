@@ -2,8 +2,8 @@ import images from "../logic/images";
 import Entity from "./Entity";
 
 export default class Player extends Entity {
-  constructor(...args) {
-    super(...args);
+  constructor(args) {
+    super(args);
 
     this.x = 800;
     this.y = 450;

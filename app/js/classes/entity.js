@@ -1,7 +1,7 @@
 export default class Entity {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
+  constructor(args) {
+    this.x = args.x || 0;
+    this.y = args.y || 0;
   }
 }
 

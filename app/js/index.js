@@ -11,7 +11,7 @@ let prevTime = 0;
 
 // object with all entities
 let entities = {};
-entities.player = new Player();
+entities.player = new Player({});
 entities.playerShots = [];
 entities.enemies = [];
 
