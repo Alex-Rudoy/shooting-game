@@ -1,4 +1,5 @@
 import "../scss/main.scss";
+import EnemyRectangle1 from "./classes/EnemyRectangle1";
 import Player from "./classes/Player";
 import draw from "./logic/draw";
 import move from "./logic/move";
@@ -14,6 +15,8 @@ let entities = {};
 entities.player = new Player({});
 entities.playerShots = [];
 entities.enemies = [];
+
+entities.enemies.push(new EnemyRectangle1({ x: 1200, y: 700 }));
 
 playerControls(entities.player);
 

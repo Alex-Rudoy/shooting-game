@@ -5,3 +5,7 @@ export default class Enemy extends Entity {
     super(args);
   }
 }
+
+Enemy.prototype.getPlayerAngle = function (player) {
+  return Math.atan2(player.y - this.y, player.x - this.x);
+};

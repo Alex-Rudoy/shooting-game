@@ -3,10 +3,12 @@ let canvas = document.querySelector(".game");
 let ctx = canvas.getContext("2d");
 
 export default function draw(entities, f) {
-  let { player, playerShots } = entities;
+  let { player, playerShots, enemies } = entities;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  //test draw
   playerShots.forEach((shot) => shot.draw());
+
   player.draw(player.image, player.x, player.y, player.turnAngle);
+
+  enemies.forEach((enemy) => enemy.draw());
 }
