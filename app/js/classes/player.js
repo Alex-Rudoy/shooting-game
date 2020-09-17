@@ -27,10 +27,11 @@ export default class Player extends Entity {
 
   playerRotation() {
     let canvas = document.querySelector(".game");
-    canvas.onmousemove = function (event) {
-      entities.player.turnAngle = Math.atan2(
-        ((event.clientY - canvas.offsetTop) / canvas.clientHeight) * canvas.height - entities.player.y,
-        ((event.clientX - canvas.offsetLeft) / canvas.clientWidth) * canvas.width - entities.player.x
+
+    canvas.onmousemove = (event) => {
+      this.turnAngle = Math.atan2(
+        ((event.clientY - canvas.offsetTop) / canvas.clientHeight) * canvas.height - this.y,
+        ((event.clientX - canvas.offsetLeft) / canvas.clientWidth) * canvas.width - this.x
       );
     };
   }
