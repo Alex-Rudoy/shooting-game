@@ -12,3 +12,8 @@ export default class EnemyRectangle1 extends Enemy {
     this.speed = 2;
   }
 }
+
+EnemyRectangle1.prototype.decision = function (player) {
+  let [playerDistance, playerAngle] = this.getPlayerPosition(player);
+  this.turnAngle = playerAngle;
+};

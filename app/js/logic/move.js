@@ -16,7 +16,7 @@ export default function move(entities, f) {
   );
 
   enemies.forEach((enemy) => {
-    enemy.turnAngle = enemy.getPlayerAngle(player);
+    enemy.decision(player);
     enemy.move(enemy.turnAngle, enemy.speed * f);
   });
 
