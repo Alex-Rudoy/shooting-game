@@ -1,7 +1,9 @@
+import EnemyCircle1 from "../classes/EnemyCircle1";
 import EnemyRectangle1 from "../classes/EnemyRectangle1";
 
 let levels = [
   [
+    { enemy: new EnemyCircle1({ x: 800, y: 950 }), time: 9300 },
     { enemy: new EnemyRectangle1({ x: 800, y: 950 }), time: 9300 },
     { enemy: new EnemyRectangle1({ x: 800, y: -50 }), time: 9200 },
     { enemy: new EnemyRectangle1({ x: -50, y: 450 }), time: 9100 },
