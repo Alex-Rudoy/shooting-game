@@ -11,6 +11,8 @@ export default class Player extends Entity {
     this.hitbox = 20;
 
     this.turnAngle = 0;
+    this.isShooting = false;
+    this.shotReady = true;
 
     this.maxSpeed = 2;
     this.speed = 0;

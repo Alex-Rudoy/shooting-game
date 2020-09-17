@@ -1,7 +1,9 @@
 import "../scss/main.scss";
-import Player from "./classes/player";
+import Player from "./classes/Player";
 import draw from "./logic/draw";
 import move from "./logic/move";
+import playerControls from "./logic/playerControls";
+import spawn from "./logic/spawn";
 
 // time variables
 let f = 0;
@@ -13,6 +15,8 @@ entities.player = new Player();
 entities.playerShots = [];
 entities.enemies = [];
 
+playerControls(entities, f);
+
 function gameLoop(time) {
   requestAnimationFrame(gameLoop);
 
@@ -21,6 +25,7 @@ function gameLoop(time) {
   if (isNaN(f)) f = 1;
   prevTime = time;
 
+  spawn(entities, f);
   move(entities, f);
   draw(entities, f);
 }

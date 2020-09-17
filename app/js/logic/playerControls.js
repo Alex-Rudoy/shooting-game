@@ -49,4 +49,7 @@ export default function playerControls({ player, playerShots }, f) {
     }
   }
 
+  // player shooting
+  canvas.addEventListener("mousedown", () => (player.shooting = true));
+  canvas.addEventListener("mousedown", () => (player.shooting = false));
 }
