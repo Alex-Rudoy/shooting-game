@@ -2,6 +2,7 @@ export default class Entity {
   constructor(args) {
     this.x = args.x || 0;
     this.y = args.y || 0;
+    this.toDestroy = false;
   }
 }
 
