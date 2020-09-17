@@ -12,7 +12,7 @@ export default class Player extends Entity {
 
     this.turnAngle = 0;
 
-    this.speedVar = 100;
+    this.maxSpeed = 2;
     this.speed = 0;
 
     this.moveAngle = 0;
@@ -58,12 +58,22 @@ export default class Player extends Entity {
   }
 
   recalculateMoveAngle() {
-    if (this.moveTop) {
-      this.moveAngle = Math.PI / 2;
+    if (this.moveTop || this.moveLeft || this.moveRight || this.moveBot) {
+      this.speed = this.maxSpeed;
+    } else {
+      this.speed = 0;
     }
 
-    if (this.moveBot) {
-      this.moveAngle = -Math.PI / 2;
+    if (this.moveTop && !this.moveBot) {
+      this.moveAngle = -Math.PI / 2 - (Math.PI / 4) * this.moveLeft + (Math.PI / 4) * this.moveRight;
+    }
+
+    if (this.moveBot && !this.moveTop) {
+      this.moveAngle = Math.PI / 2 + (Math.PI / 4) * this.moveLeft - (Math.PI / 4) * this.moveRight;
+    }
+
+    if (this.moveTop == this.moveBot) {
+      this.moveAngle = Math.PI * this.moveLeft + Math.PI * this.moveLeft * this.moveRight;
     }
   }
 }
