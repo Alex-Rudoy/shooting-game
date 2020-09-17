@@ -14,7 +14,7 @@ export default class Player extends Entity {
     this.isShooting = false;
     this.shotReady = true;
 
-    this.maxSpeed = 2;
+    this.maxSpeed = 4;
     this.speed = 0;
 
     this.moveAngle = 0;
@@ -22,5 +22,13 @@ export default class Player extends Entity {
     this.moveLeft = false;
     this.moveBot = false;
     this.moveRight = false;
+  }
+
+  move(angle, distance) {
+    super.move(angle, distance);
+    if (this.x < 40) this.x = 40;
+    if (this.x > 1560) this.x = 1560;
+    if (this.y < 40) this.y = 40;
+    if (this.y > 860) this.y = 860;
   }
 }
