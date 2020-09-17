@@ -1,10 +1,7 @@
 export default class Entity {
-  constructor(image, x, y, hitbox, speed) {
-    this.image = image;
+  constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.hitbox = hitbox;
-    this.speed = speed;
   }
 }
 
