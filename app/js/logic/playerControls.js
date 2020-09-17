@@ -1,4 +1,4 @@
-export default function playerControls({ player, playerShots }, f) {
+export default function playerControls(player) {
   let canvas = document.querySelector(".game");
 
   // player rotation
@@ -8,6 +8,10 @@ export default function playerControls({ player, playerShots }, f) {
       ((event.clientX - canvas.offsetLeft) / canvas.clientWidth) * canvas.width - player.x
     );
   };
+
+  // player shooting
+  canvas.addEventListener("mousedown", () => (player.isShooting = true));
+  canvas.addEventListener("mouseup", () => (player.isShooting = false));
 
   // player movement
   document.addEventListener("keydown", (e) => keyDownHandler(e));
@@ -48,8 +52,4 @@ export default function playerControls({ player, playerShots }, f) {
       player.moveAngle = Math.PI * player.moveLeft + Math.PI * player.moveLeft * player.moveRight;
     }
   }
-
-  // player shooting
-  canvas.addEventListener("mousedown", () => (player.isShooting = true));
-  canvas.addEventListener("mouseup", () => (player.isShooting = false));
 }

@@ -15,7 +15,7 @@ entities.player = new Player({});
 entities.playerShots = [];
 entities.enemies = [];
 
-playerControls(entities, f);
+playerControls(entities.player);
 
 function gameLoop(time) {
   requestAnimationFrame(gameLoop);
