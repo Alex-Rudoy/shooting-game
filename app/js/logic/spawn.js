@@ -1,6 +1,7 @@
 import PlayerShot from "../classes/PlayerShot";
 
-export default function spawn({ player, playerShots, enemies }, f) {
+export default function spawn(entities, f) {
+  let { player, playerShots, enemies } = entities;
   if (player.isShooting && player.shotReady) spawnPlayerShots();
 
   function spawnPlayerShots() {
