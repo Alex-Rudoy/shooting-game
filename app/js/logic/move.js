@@ -5,9 +5,9 @@ export default function move(entities, f) {
   playerShots.forEach((shot) => {
     shot.move(shot.turnAngle, shot.speed * f);
 
-    // collision with enemies
+    // collision of shots with enemies
     enemies.forEach((enemy) => {
-      if (shot.collisionDetection(enemy)) {
+      if (shot.collideWith(enemy)) {
         shot.toDestroy = true;
         enemy.takeDamage();
       }
@@ -22,6 +22,20 @@ export default function move(entities, f) {
   enemies.forEach((enemy) => {
     enemy.decision(player);
     enemy.move(enemy.turnAngle, enemy.speed * f);
+
+    // collision of enemies with other enemies
+    enemies.forEach((enemy2) => {
+      if (enemy.collideWith(enemy2)) {
+        let [angle, distance] = enemy.getEntityPosition(enemy2);
+        enemy.move(angle, (distance - enemy.hitbox - enemy2.hitbox) / 2);
+        enemy2.move(angle + Math.PI, (distance - enemy.hitbox - enemy2.hitbox) / 2);
+      }
+    });
+
+    if (enemy.collideWith(player)) {
+      player.takeDamage();
+      enemy.takeDamage();
+    }
   });
 
   entities.enemies = enemies.filter((enemy) => !enemy.toDestroy);

@@ -20,11 +20,18 @@ Entity.prototype.draw = function () {
   ctx.setTransform(1, 0, 0, 1, 0, 0); // restore default transform
 };
 
-Entity.prototype.collisionDetection = function (obj) {
+Entity.prototype.collideWith = function (obj) {
   if (Math.sqrt((this.x - obj.x) ** 2 + (this.y - obj.y) ** 2) < this.hitbox + obj.hitbox) {
     return true;
   }
   return false;
+};
+
+Entity.prototype.getEntityPosition = function (entity) {
+  return [
+    Math.atan2(entity.y - this.y, entity.x - this.x),
+    Math.sqrt((this.x - entity.x) ** 2 + (this.y - entity.y) ** 2),
+  ];
 };
 
 Entity.prototype.takeDamage = function () {

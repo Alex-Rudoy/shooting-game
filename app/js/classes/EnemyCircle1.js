@@ -20,7 +20,7 @@ export default class EnemyCircle1 extends Enemy {
 }
 
 EnemyCircle1.prototype.decision = function (player) {
-  let [playerDistance, playerAngle] = this.getPlayerPosition(player);
+  let [playerAngle, playerDistance] = this.getEntityPosition(player);
   if (this.state == "chooseDirection") {
     this.turnAngle = playerAngle - Math.PI / 3 + (Math.random() * Math.PI * 2) / 3;
     this.state = "move";
