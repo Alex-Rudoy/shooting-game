@@ -3,7 +3,7 @@ export default function move(gameState, f) {
   player.move(player.moveAngle, player.speed * f);
 
   playerShots.forEach((shot) => {
-    shot.move(shot.turnAngle, shot.speed * f);
+    shot.move(shot.moveAngle, shot.speed * f);
 
     // collision of shots with enemies
     enemies.forEach((enemy) => {
@@ -21,7 +21,7 @@ export default function move(gameState, f) {
 
   enemies.forEach((enemy) => {
     enemy.decision(player);
-    enemy.move(enemy.turnAngle, enemy.speed * f);
+    enemy.move(enemy.moveAngle, enemy.speed * f);
 
     // collision of enemies with other enemies
     enemies.forEach((enemy2) => {

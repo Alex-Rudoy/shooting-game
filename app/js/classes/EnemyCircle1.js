@@ -8,7 +8,6 @@ export default class EnemyCircle1 extends Enemy {
     this.image = images.EnemyCircle1;
 
     this.hitbox = 20;
-    this.turnAngle = 0;
     this.maxSpeed = 3;
     this.speed = 3;
 
@@ -22,7 +21,8 @@ export default class EnemyCircle1 extends Enemy {
 EnemyCircle1.prototype.decision = function (player) {
   let [playerAngle, playerDistance] = this.getEntityPosition(player);
   if (this.state == "chooseDirection") {
-    this.turnAngle = playerAngle - Math.PI / 3 + (Math.random() * Math.PI * 2) / 3;
+    this.moveAngle = playerAngle - Math.PI / 3 + (Math.random() * Math.PI * 2) / 3;
+    this.turnAngle = playerAngle;
     this.state = "move";
     setTimeout(() => {
       this.state = "wait";

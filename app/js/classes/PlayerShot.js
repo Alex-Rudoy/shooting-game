@@ -6,6 +6,7 @@ export default class PlayerShot extends Entity {
     super(args);
 
     this.turnAngle = args.turnAngle;
+    this.moveAngle = args.turnAngle;
 
     this.image = images.playerShot;
     this.hitbox = 10;

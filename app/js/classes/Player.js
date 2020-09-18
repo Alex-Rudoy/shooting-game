@@ -14,14 +14,12 @@ export default class Player extends Entity {
     this.maxHP = 3;
     this.HP = 3;
 
-    this.turnAngle = 0;
     this.isShooting = false;
     this.shotReady = true;
 
     this.maxSpeed = 4;
     this.speed = 0;
 
-    this.moveAngle = 0;
     this.moveTop = false;
     this.moveLeft = false;
     this.moveBot = false;

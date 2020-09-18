@@ -5,6 +5,8 @@ export default class Entity {
     this.x = args.x || 0;
     this.y = args.y || 0;
     this.toDestroy = false;
+    this.moveAngle = 0;
+    this.turnAngle = 0;
   }
 }
 

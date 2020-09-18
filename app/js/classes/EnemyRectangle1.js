@@ -8,7 +8,6 @@ export default class EnemyRectangle1 extends Enemy {
     this.image = images.EnemyRectangle1;
 
     this.hitbox = 20;
-    this.turnAngle = 0;
     this.speed = 1.5;
 
     this.maxHP = 1;
@@ -19,4 +18,5 @@ export default class EnemyRectangle1 extends Enemy {
 EnemyRectangle1.prototype.decision = function (player) {
   let [playerAngle, playerDistance] = this.getEntityPosition(player);
   this.turnAngle = playerAngle;
+  this.moveAngle = playerAngle;
 };
