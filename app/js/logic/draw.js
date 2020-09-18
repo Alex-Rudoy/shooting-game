@@ -1,9 +1,9 @@
-let canvas = document.querySelector(".game");
+let canvas = document.querySelector("canvas");
 /** @type {CanvasRenderingContext2D} */
 export let ctx = canvas.getContext("2d");
 
-export default function draw(entities, f) {
-  let { player, playerShots, enemies } = entities;
+export default function draw(gameState, f) {
+  let { player, playerShots, enemies } = gameState;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   playerShots.forEach((shot) => shot.draw());

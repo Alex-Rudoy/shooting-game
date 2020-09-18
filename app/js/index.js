@@ -1,22 +1,18 @@
 import "../scss/main.scss";
 import Player from "./classes/Player";
-import draw from "./logic/draw";
-import move from "./logic/move";
 import playerControls from "./logic/playerControls";
-import spawn from "./logic/spawn";
 
+// object with all entities and game state
 let gameState = {
-  paused: false,
-};
-
-// object with all entities
-let entities = {
+  screen: "menu",
+  maxlvl: 0,
+  lvl: 0,
   player: new Player({}),
   playerShots: [],
   enemies: [],
 };
 
-playerControls(entities.player);
+playerControls(gameState.player);
 
 // time variables
 let f = 0;
@@ -30,9 +26,7 @@ function gameLoop(time) {
   if (isNaN(f)) f = 1;
   prevTime = time;
 
-  spawn(entities, f * 16);
-  move(entities, f);
-  draw(entities, f);
+  gameStateManager(gameState, f);
 }
 
 gameLoop();

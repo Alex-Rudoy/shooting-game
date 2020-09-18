@@ -1,5 +1,5 @@
-export default function move(entities, f) {
-  let { player, playerShots, enemies } = entities;
+export default function move(gameState, f) {
+  let { player, playerShots, enemies } = gameState;
   player.move(player.moveAngle, player.speed * f);
 
   playerShots.forEach((shot) => {
@@ -15,7 +15,7 @@ export default function move(entities, f) {
   });
 
   // remove destroyed player shots
-  entities.playerShots = playerShots.filter(
+  gameState.playerShots = playerShots.filter(
     (shot) => shot.x > -50 && shot.x < 1650 && shot.y > -50 && shot.y < 950 && !shot.toDestroy
   );
 
@@ -38,5 +38,5 @@ export default function move(entities, f) {
     }
   });
 
-  entities.enemies = enemies.filter((enemy) => !enemy.toDestroy);
+  gameState.enemies = enemies.filter((enemy) => !enemy.toDestroy);
 }
