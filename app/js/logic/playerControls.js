@@ -1,6 +1,6 @@
 export default function playerControls(gameStateManager) {
   let canvas = gameStateManager.canvas;
-  let player = gameStateManager.gameState.player;
+  let player = gameStateManager.player;
 
   // player rotation
   canvas.onmousemove = (event) => {
