@@ -1,11 +1,13 @@
+import ui from "../classes/UI";
+
 export default function playerControls(player) {
-  let canvas = document.querySelector(".game");
+  let canvas = document.querySelector("canvas");
 
   // player rotation
   canvas.onmousemove = (event) => {
     player.turnAngle = Math.atan2(
-      ((event.clientY - canvas.offsetTop) / canvas.clientHeight) * canvas.height - player.y,
-      ((event.clientX - canvas.offsetLeft) / canvas.clientWidth) * canvas.width - player.x
+      ((event.clientY - canvas.getBoundingClientRect().top) / canvas.clientHeight) * canvas.height - player.y,
+      ((event.clientX - canvas.getBoundingClientRect().left) / canvas.clientWidth) * canvas.width - player.x
     );
   };
 
@@ -22,6 +24,7 @@ export default function playerControls(player) {
     if (e.code == "KeyA") player.moveLeft = true;
     if (e.code == "KeyS") player.moveBot = true;
     if (e.code == "KeyD") player.moveRight = true;
+    if (e.code == "Escape") ui.pause();
     recalculateMoveAngle();
   }
 
