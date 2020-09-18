@@ -1,7 +1,6 @@
-import ui from "../classes/UI";
-
-export default function playerControls(player) {
-  let canvas = document.querySelector("canvas");
+export default function playerControls(gameStateManager) {
+  let canvas = gameStateManager.canvas;
+  let player = gameStateManager.gameState.player;
 
   // player rotation
   canvas.onmousemove = (event) => {
@@ -24,7 +23,7 @@ export default function playerControls(player) {
     if (e.code == "KeyA") player.moveLeft = true;
     if (e.code == "KeyS") player.moveBot = true;
     if (e.code == "KeyD") player.moveRight = true;
-    if (e.code == "Escape") ui.pause();
+    if (e.code == "Escape") gameStateManager.pause();
     recalculateMoveAngle();
   }
 

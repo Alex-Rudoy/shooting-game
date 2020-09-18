@@ -1,7 +1,7 @@
 import PlayerShot from "../classes/PlayerShot";
 import levels from "./levels";
 
-export default function spawn(gameState, waveTime) {
+export default function spawn(gameState) {
   let { player, playerShots, enemies } = gameState;
 
   // player shot spawn
@@ -12,7 +12,7 @@ export default function spawn(gameState, waveTime) {
   }
 
   // enemy spawn
-  if (levels[0].length > 0 && levels[0][levels[0].length - 1].time <= waveTime) {
+  if (levels[0].length > 0 && levels[0][levels[0].length - 1].time <= gameState.waveTime) {
     gameState.enemies.push(levels[0].pop().enemy);
   }
 }

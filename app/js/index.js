@@ -1,21 +1,9 @@
 import "../scss/main.scss";
-import Player from "./classes/Player";
-import UI from "./classes/UI";
-import gameStateManager from "./logic/gameStateManager";
+import GameStateManager from "./classes/GameStateManager";
 import playerControls from "./logic/playerControls";
 
-// object with all entities and game state
-let gameState = {
-  screen: "menu",
-  maxlvl: 0,
-  lvl: 0,
-  player: new Player({}),
-  playerShots: [],
-  enemies: [],
-};
-
-let ui = new UI(gameState);
-playerControls(gameState.player);
+let gameStateManager = new GameStateManager();
+playerControls(gameStateManager);
 
 // time variables
 let f = 0;
@@ -29,7 +17,7 @@ function gameLoop(time) {
   if (isNaN(f)) f = 1;
   prevTime = time;
 
-  gameStateManager(ui, gameState, f);
+  gameStateManager.loop(f);
 }
 
 gameLoop();
