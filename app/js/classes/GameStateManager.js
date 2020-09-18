@@ -53,7 +53,7 @@ export default class GameStateManager {
   }
 
   getWaveEnemies() {
-    this.waveEnemies = levels[this.lvl][this.wave].slice();
+    this.waveEnemies = levels(this.lvl, this.wave);
   }
 
   buttonClickHandler(e) {

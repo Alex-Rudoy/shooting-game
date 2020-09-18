@@ -12,6 +12,7 @@ export default function spawn(gameState) {
 
   // enemy spawn
   if (waveEnemies.length > 0 && waveEnemies[waveEnemies.length - 1].time <= gameState.waveTime) {
-    gameState.enemies.push(waveEnemies.pop().enemy);
+    let enemy = waveEnemies.pop();
+    gameState.enemies.push(new enemy.enemyClass({ x: enemy.x, y: enemy.y }));
   }
 }
