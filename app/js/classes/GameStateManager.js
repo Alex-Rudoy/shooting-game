@@ -7,7 +7,6 @@ import Player from "./Player";
 export default class GameStateManager {
   constructor() {
     this.screen = "menu";
-    this.prevScreen = "menu";
 
     this.maxlvl = 1;
     this.lvl = 0;
@@ -45,7 +44,7 @@ export default class GameStateManager {
       move(this, f);
       draw(this, f);
 
-      //game over
+      // game over check
       if (this.player.HP <= 0) {
         this.gameOver();
       }
@@ -89,6 +88,8 @@ export default class GameStateManager {
 
   gameOver() {
     this.screen = "gameOver";
+    this.canvas.classList.add("blurred");
+    this.gameOverScreen.classList.add("game-over--visible");
   }
 
   pause() {
