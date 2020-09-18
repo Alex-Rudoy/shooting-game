@@ -1,5 +1,6 @@
 import "../scss/main.scss";
 import Player from "./classes/Player";
+import gameStateManager from "./logic/gameStateManager";
 import playerControls from "./logic/playerControls";
 
 // object with all entities and game state
