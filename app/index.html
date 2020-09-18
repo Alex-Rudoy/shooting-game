@@ -11,7 +11,7 @@
     <div class="wrapper">
       <div class="game">
         <canvas width="1600" height="900"></canvas>
-        <div class="menu menu--visible">
+        <div class="menu">
           <div class="button menu__item menu__item--unlocked" data-button="Tutorial">Tutorial</div>
           <div class="button menu__item" data-button="Level" data-level="1">Level 1</div>
           <div class="button menu__item" data-button="Level" data-level="2">Level 2</div>
@@ -23,6 +23,11 @@
           <div class="button pause__item" data-button="Continue">Continue</div>
           <div class="button pause__item" data-button="Restart">Restart</div>
           <div class="button pause__item" data-button="Menu">Exit to menu</div>
+        </div>
+        <div class="game-over">
+          <h1>GAME OVER</h1>
+          <div class="button game-over__item" data-button="Restart">Restart</div>
+          <div class="button game-over__item" data-button="Menu">Exit to menu</div>
         </div>
       </div>
     </div>
