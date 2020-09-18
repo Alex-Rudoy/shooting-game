@@ -2,7 +2,8 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: "Muli", sans-serif;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
 }
 
 html {
@@ -26,11 +27,4 @@ a:hover,
 a:active {
   text-decoration: none;
   color: inherit;
-}
-
-.game {
-  width: 160vh;
-  height: 90vh;
-  border: 1px solid white;
-  background-color: black;
 }

@@ -1,5 +1,6 @@
 import "../scss/main.scss";
 import Player from "./classes/Player";
+import UI from "./classes/UI";
 import gameStateManager from "./logic/gameStateManager";
 import playerControls from "./logic/playerControls";
 
@@ -13,6 +14,7 @@ let gameState = {
   enemies: [],
 };
 
+let ui = new UI(gameState);
 playerControls(gameState.player);
 
 // time variables
@@ -27,7 +29,7 @@ function gameLoop(time) {
   if (isNaN(f)) f = 1;
   prevTime = time;
 
-  gameStateManager(gameState, f);
+  gameStateManager(ui, gameState, f);
 }
 
 gameLoop();
