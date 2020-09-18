@@ -53,6 +53,10 @@ export default class GameStateManager {
         return;
       case "Level":
         this.startLevel(e.target.dataset.level);
+        return;
+      case "Continue":
+        this.pause();
+        return;
       default:
         return;
     }
