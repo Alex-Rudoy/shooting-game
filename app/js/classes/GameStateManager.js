@@ -2,6 +2,7 @@ import draw from "../logic/draw";
 import levels from "../logic/levels";
 import move from "../logic/move";
 import spawn from "../logic/spawn";
+import tutorialMessages from "../logic/tutorialMessages";
 import Player from "./Player";
 
 export default class GameStateManager {
@@ -123,7 +124,7 @@ export default class GameStateManager {
   }
 
   selectMessage() {
-    if (this.lvl == 0) return tutorial[this.wave];
+    if (this.lvl == 0) return tutorialMessages[this.wave];
     if (this.wave == levels[this.lvl].length - 1) return `<h2 class="red">BOSS WARNING!!!</h2>`;
     return `<h2>Wave ${this.wave + 1}</h2>`;
   }

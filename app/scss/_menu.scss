@@ -25,7 +25,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 1vh;
-    transition: 0.5s;
+    transition: transform 0.5s, opacity 0.5s;
     opacity: 0.2;
 
     &--unlocked {
@@ -39,11 +39,12 @@
     }
 
     &:nth-child(1) {
-      background-color: #b3d4a3;
+      background: url("../img/player.png") no-repeat bottom -10px right -10px, #b3d4a3;
       box-shadow: 0 0 15px #b3d4a3;
     }
     &:nth-child(2) {
       background-color: #f5c0c0;
+      box-shadow: 0 0 15px #f5c0c0;
     }
     &:nth-child(3) {
       background-color: #fff;

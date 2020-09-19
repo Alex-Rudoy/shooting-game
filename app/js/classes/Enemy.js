@@ -12,5 +12,4 @@ Enemy.prototype.drawHPBar = function () {
   ctx.fillStyle = "red";
   ctx.strokeRect(this.x - 50, this.y - 70, 100, 10);
   ctx.fillRect(this.x - 50, this.y - 70, (100 / this.maxHP) * this.HP, 10);
-  for (let i = 0; i < this.maxHP; i++) {}
 };
