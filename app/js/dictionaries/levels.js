@@ -19,9 +19,9 @@ let mid = "mid";
 function getRandom(coordinate, position) {
   let x = coordinate == "x";
   let y = coordinate == "y";
-  let start = coordinate == "start";
-  let end = coordinate == "end";
-  let mid = coordinate == "mid";
+  let start = position == "start";
+  let end = position == "end";
+  let mid = position == "mid";
 
   return (
     Math.random() * (500 * x + 200 * y) +
