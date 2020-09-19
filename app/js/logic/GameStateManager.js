@@ -10,7 +10,7 @@ export default class GameStateManager {
   constructor() {
     this.screen = "menu";
 
-    this.maxlvl = 0;
+    this.maxlvl = localStorage.getItem("maxlvl") || 0;
     this.lvl = 0;
     this.wave = 0;
     this.waveEnemies = [];
@@ -163,7 +163,10 @@ export default class GameStateManager {
     this.canvas.classList.add("blurred");
     this.announcer.classList.remove("announcer--visible");
     this.victoryScreen.classList.add("victory--visible");
-    if (this.lvl == this.maxlvl) this.maxlvl++;
+    if (this.lvl == this.maxlvl) {
+      this.maxlvl++;
+      localStorage.setItem("maxlvl", this.maxlvl);
+    }
   }
 
   pause() {
