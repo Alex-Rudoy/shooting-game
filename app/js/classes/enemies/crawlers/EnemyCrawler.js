@@ -8,7 +8,7 @@ export default class EnemyCrawler extends Enemy {
     this.image = images.EnemyCrawler;
 
     this.hitbox = 20;
-    this.maxSpeed = 3;
+    this.maxSpeed = 1.5;
     this.speed = 1.5;
   }
 }

@@ -8,11 +8,8 @@ export default class EnemyWanderer extends Enemy {
     this.image = images.EnemyWanderer;
 
     this.hitbox = 20;
-    this.maxSpeed = 3;
-    this.speed = 3;
-
-    this.maxHP = 1;
-    this.HP = 1;
+    this.maxSpeed = 4;
+    this.speed = 4;
 
     this.state = "chooseDirection";
   }

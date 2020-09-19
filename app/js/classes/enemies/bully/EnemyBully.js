@@ -5,11 +5,11 @@ export default class EnemyCrawler extends Enemy {
   constructor(args) {
     super(args);
 
-    this.image = images.EnemyCrawler;
+    this.image = images.EnemyBully;
 
-    this.hitbox = 20;
-    this.maxSpeed = 3;
-    this.speed = 1.5;
+    this.hitbox = 35;
+    this.maxSpeed = 1;
+    this.speed = 1;
   }
 }
 
