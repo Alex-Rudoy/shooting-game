@@ -1,0 +1,53 @@
+.victory {
+  width: 176vh;
+  height: 99vh;
+  opacity: 0;
+  pointer-events: none;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding: 20vh 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  &--visible {
+    opacity: 1;
+    pointer-events: initial;
+  }
+
+  &__message {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  & h2 {
+    display: block;
+    font-size: 4vh;
+    color: white;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1vh;
+    transition: 0.5s;
+    opacity: 0.9;
+    cursor: pointer;
+    background-color: #ddd;
+    width: 50vh;
+    height: 10vh;
+
+    &:hover {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+  }
+}

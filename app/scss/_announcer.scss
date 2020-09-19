@@ -16,6 +16,10 @@
     opacity: 1;
   }
 
+  &.blurred {
+    filter: blur(10px);
+  }
+
   & h2 {
     display: block;
     font-size: 4vh;

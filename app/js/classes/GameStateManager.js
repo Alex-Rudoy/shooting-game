@@ -23,12 +23,14 @@ export default class GameStateManager {
     this.announcer = document.querySelector(".announcer");
     this.menuScreen = document.querySelector(".menu");
     this.pauseScreen = document.querySelector(".pause");
+    this.victoryScreen = document.querySelector(".victory");
     this.gameOverScreen = document.querySelector(".game-over");
 
     // startup opacity hack
     this.announcer.style.transition = "opacity 0.5s";
     this.menuScreen.style.transition = "opacity 0.5s";
     this.pauseScreen.style.transition = "opacity 0.5s";
+    this.victoryScreen.style.transition = "opacity 0.5s";
     this.gameOverScreen.style.transition = "opacity 0.5s";
 
     // add onclick to all buttons
@@ -66,11 +68,9 @@ export default class GameStateManager {
   buttonClickHandler(e) {
     let buttonClicked = e.target.dataset.button;
     switch (buttonClicked) {
-      case "Tutorial":
-        this.startLevel(0);
-        return;
       case "Level":
-        this.startLevel(e.target.dataset.level);
+        // must be number
+        this.startLevel(+e.target.dataset.level);
         return;
       case "Continue":
         this.pause();
@@ -101,6 +101,7 @@ export default class GameStateManager {
 
       this.canvas.classList.remove("blurred");
       this.announcer.classList.remove("announcer--visible");
+      this.announcer.classList.remove("blurred");
       this.menuScreen.classList.remove("menu--visible");
       this.pauseScreen.classList.remove("pause--visible");
       this.gameOverScreen.classList.remove("game-over--visible");
@@ -108,7 +109,9 @@ export default class GameStateManager {
   }
 
   startWave() {
-    this.waveEnemies = levels[this.lvl][this.wave];
+    clearTimeout(this.announcerTimeout);
+
+    this.waveEnemies = levels[this.lvl][this.wave].slice();
     this.waveTime = 0;
     this.announcer.innerHTML = this.selectMessage();
 
@@ -116,6 +119,7 @@ export default class GameStateManager {
       this.announcer.classList.add("announcer--visible");
     }, 500);
 
+    // if not in tutorial
     if (this.lvl) {
       setTimeout(() => {
         this.announcer.classList.remove("announcer--visible");
@@ -134,6 +138,7 @@ export default class GameStateManager {
     this.menuScreen.classList.add("menu--visible");
     this.announcer.classList.remove("announcer--visible");
     this.pauseScreen.classList.remove("pause--visible");
+    this.victoryScreen.classList.remove("victory--visible");
     this.gameOverScreen.classList.remove("game-over--visible");
     this.canvas.getContext("2d").clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
@@ -145,10 +150,20 @@ export default class GameStateManager {
     this.gameOverScreen.classList.add("game-over--visible");
   }
 
+  victory() {
+    this.screen = "victory";
+    this.victoryScreen.firstElementChild.innerHTML = victoryMessages[this.lvl];
+
+    this.canvas.classList.add("blurred");
+    this.announcer.classList.remove("announcer--visible");
+    this.victoryScreen.classList.add("victory--visible");
+  }
+
   pause() {
     if (this.screen == "game") {
       this.screen = "pause";
       this.canvas.classList.add("blurred");
+      this.announcer.classList.add("blurred");
       this.pauseScreen.classList.add("pause--visible");
       return;
     }
@@ -156,6 +171,7 @@ export default class GameStateManager {
     if (this.screen == "pause") {
       this.screen = "game";
       this.canvas.classList.remove("blurred");
+      this.announcer.classList.remove("blurred");
       this.pauseScreen.classList.remove("pause--visible");
     }
   }
