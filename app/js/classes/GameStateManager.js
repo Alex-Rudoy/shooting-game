@@ -19,11 +19,13 @@ export default class GameStateManager {
     this.enemies = [];
 
     this.canvas = document.querySelector("canvas");
+    this.announcer = document.querySelector(".announcer");
     this.menuScreen = document.querySelector(".menu");
     this.pauseScreen = document.querySelector(".pause");
     this.gameOverScreen = document.querySelector(".game-over");
 
     // startup opacity hack
+    this.announcer.style.transition = "opacity 0.5s";
     this.menuScreen.style.transition = "opacity 0.5s";
     this.pauseScreen.style.transition = "opacity 0.5s";
     this.gameOverScreen.style.transition = "opacity 0.5s";
@@ -45,15 +47,19 @@ export default class GameStateManager {
       move(this, f);
       draw(this, f);
 
-      // game over check
-      if (this.player.HP <= 0) {
-        this.gameOver();
+      //wave clear check
+      if (this.waveEnemies.length == 0 && this.enemies.length == 0) {
+        this.wave++;
+        if (this.wave == levels[this.lvl].length) {
+          this.victory();
+        } else {
+          this.startWave();
       }
     }
-  }
 
-  getWaveEnemies() {
-    this.waveEnemies = levels(this.lvl, this.wave);
+      // game over check
+      if (this.player.HP <= 0) this.gameOver();
+  }
   }
 
   buttonClickHandler(e) {
@@ -86,23 +92,46 @@ export default class GameStateManager {
       this.wave = 0;
       this.playerShots = [];
       this.enemies = [];
-      this.waveTime = 0;
-      this.getWaveEnemies();
+      this.startWave();
 
       this.player.x = 800;
       this.player.y = 450;
       this.player.HP = 3;
 
       this.canvas.classList.remove("blurred");
+      this.announcer.classList.remove("announcer--visible");
       this.menuScreen.classList.remove("menu--visible");
       this.pauseScreen.classList.remove("pause--visible");
       this.gameOverScreen.classList.remove("game-over--visible");
     }
   }
 
+  startWave() {
+    this.waveEnemies = levels[this.lvl][this.wave];
+    this.waveTime = 0;
+    this.announcer.innerHTML = this.selectMessage();
+
+    setTimeout(() => {
+      this.announcer.classList.add("announcer--visible");
+    }, 500);
+
+    if (this.lvl) {
+      setTimeout(() => {
+        this.announcer.classList.remove("announcer--visible");
+      }, 2500);
+    }
+  }
+
+  selectMessage() {
+    if (this.lvl == 0) return tutorial[this.wave];
+    if (this.wave == levels[this.lvl].length - 1) return `<h2 class="red">BOSS WARNING!!!</h2>`;
+    return `<h2>Wave ${this.wave + 1}</h2>`;
+  }
+
   toMenu() {
     this.screen = "menu";
     this.menuScreen.classList.add("menu--visible");
+    this.announcer.classList.remove("announcer--visible");
     this.pauseScreen.classList.remove("pause--visible");
     this.gameOverScreen.classList.remove("game-over--visible");
     this.canvas.getContext("2d").clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -111,6 +140,7 @@ export default class GameStateManager {
   gameOver() {
     this.screen = "gameOver";
     this.canvas.classList.add("blurred");
+    this.announcer.classList.remove("announcer--visible");
     this.gameOverScreen.classList.add("game-over--visible");
   }
 
@@ -121,6 +151,7 @@ export default class GameStateManager {
       this.pauseScreen.classList.add("pause--visible");
       return;
     }
+
     if (this.screen == "pause") {
       this.screen = "game";
       this.canvas.classList.remove("blurred");

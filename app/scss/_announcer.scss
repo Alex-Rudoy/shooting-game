@@ -1,0 +1,53 @@
+.announcer {
+  width: 176vh;
+  height: 13vh;
+  opacity: 0;
+  pointer-events: none;
+
+  position: absolute;
+  top: 13vh;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--visible {
+    opacity: 1;
+  }
+
+  & h2 {
+    display: block;
+    font-size: 4vh;
+    color: white;
+
+    &.red {
+      color: red;
+    }
+  }
+}
+
+.keys-container {
+  display: inline-grid;
+  margin: 0 2vh;
+}
+
+.wasd {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.key {
+  width: 4vh;
+  height: 4vh;
+  border: 1px solid white;
+  border-radius: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+
+  &--empty {
+    border: 0;
+  }
+}
