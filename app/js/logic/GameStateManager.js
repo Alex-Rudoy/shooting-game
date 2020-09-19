@@ -1,10 +1,10 @@
+import Player from "../classes/friendly/Player";
 import levels from "../dictionaries/levels";
 import tutorialMessages from "../dictionaries/tutorialMessages";
 import victoryMessages from "../dictionaries/victoryMessages";
-import draw from "../logic/draw";
-import move from "../logic/move";
-import spawn from "../logic/spawn";
-import Player from "./Player";
+import draw from "./draw";
+import move from "./move";
+import spawn from "./spawn";
 
 export default class GameStateManager {
   constructor() {

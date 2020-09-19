@@ -1,6 +1,6 @@
-import images from "../dictionaries/images";
-import { ctx } from "../logic/draw";
-import Entity from "./Entity";
+import images from "../../dictionaries/images";
+import { ctx } from "../../logic/draw";
+import Entity from "../base/Entity";
 
 export default class Player extends Entity {
   constructor(args) {
@@ -41,8 +41,21 @@ export default class Player extends Entity {
     ctx.fillStyle = "green";
     ctx.strokeRect(this.x - 50, this.y - 70, 100, 10);
     ctx.fillRect(this.x - 50, this.y - 70, (100 / this.maxHP) * this.HP, 10);
+
+    ctx.fillStyle = "black";
     for (let i = 1; i <= this.maxHP; i++) {
       ctx.fillRect(this.x - 50 + (100 / this.maxHP) * i, this.y - 70, 1, 10);
+    }
+  }
+
+  takeDamage() {
+    if (!this.immune) {
+      this.HP--;
+      this.immune = true;
+
+      setTimeout(() => {
+        this.immune = false;
+      }, 500);
     }
   }
 }

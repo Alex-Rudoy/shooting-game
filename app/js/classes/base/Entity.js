@@ -1,4 +1,4 @@
-import { ctx } from "../logic/draw";
+import { ctx } from "../../logic/draw";
 
 export default class Entity {
   constructor(args) {
@@ -41,10 +41,12 @@ Entity.prototype.takeDamage = function () {
   if (!this.immune) {
     this.HP--;
     this.immune = true;
+
     setTimeout(() => {
       this.immune = false;
-    }, 500);
+    }, 100);
   }
+
   if (this.HP <= 0) {
     this.toDestroy = true;
   }

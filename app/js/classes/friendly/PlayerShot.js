@@ -1,5 +1,5 @@
 import images from "../../dictionaries/images";
-import Entity from "./Entity";
+import Entity from "../base/Entity";
 
 export default class PlayerShot extends Entity {
   constructor(args) {

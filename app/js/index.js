@@ -1,5 +1,5 @@
 import "../scss/main.scss";
-import GameStateManager from "./classes/GameStateManager";
+import GameStateManager from "./logic/GameStateManager";
 import playerControls from "./logic/playerControls";
 
 let gameStateManager = new GameStateManager();
