@@ -34,8 +34,14 @@ export default function move(gameState, f) {
 
     // collision of enemies with player
     if (enemy.collideWith(player)) {
-      player.takeDamage();
-      enemy.takeDamage();
+      let [angle, distance] = enemy.getEntityPosition(player);
+      enemy.move(angle, (distance - enemy.hitbox - player.hitbox) / 2);
+      player.move(angle + Math.PI, (distance - enemy.hitbox - player.hitbox) / 2);
+
+      if (!player.immune) {
+        player.takeDamage();
+        enemy.takeDamage();
+      }
     }
   });
 
