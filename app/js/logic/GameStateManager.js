@@ -10,7 +10,7 @@ export default class GameStateManager {
   constructor() {
     this.screen = "menu";
 
-    this.maxlvl = 1;
+    this.maxlvl = 0;
     this.lvl = 0;
     this.wave = 0;
     this.waveEnemies = [];
@@ -142,6 +142,11 @@ export default class GameStateManager {
     this.victoryScreen.classList.remove("victory--visible");
     this.gameOverScreen.classList.remove("game-over--visible");
     this.canvas.getContext("2d").clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    this.buttons.forEach((button) => {
+      if (button.dataset.level <= this.maxlvl && !button.classList.contains("menu__item--unlocked"))
+        button.classList.add("menu__item--unlocked");
+    });
   }
 
   gameOver() {
@@ -158,6 +163,7 @@ export default class GameStateManager {
     this.canvas.classList.add("blurred");
     this.announcer.classList.remove("announcer--visible");
     this.victoryScreen.classList.add("victory--visible");
+    if (this.lvl == this.maxlvl) this.maxlvl++;
   }
 
   pause() {
