@@ -11,6 +11,6 @@ export default class PlayerShot extends Entity {
     this.image = images.playerShot;
     this.hitbox = 10;
 
-    this.speed = 10;
+    this.speed = 15;
   }
 }
