@@ -1,5 +1,5 @@
+import images from "../dictionaries/images";
 import { ctx } from "../logic/draw";
-import images from "../logic/images";
 import Entity from "./Entity";
 
 export default class Player extends Entity {
@@ -36,8 +36,13 @@ export default class Player extends Entity {
 
   drawHPBar() {
     ctx.strokeStyle = "green";
+    ctx.fillStyle = "black";
+    ctx.fillRect(this.x - 50, this.y - 70, 100, 10);
     ctx.fillStyle = "green";
     ctx.strokeRect(this.x - 50, this.y - 70, 100, 10);
     ctx.fillRect(this.x - 50, this.y - 70, (100 / this.maxHP) * this.HP, 10);
+    for (let i = 1; i <= this.maxHP; i++) {
+      ctx.fillRect(this.x - 50 + (100 / this.maxHP) * i, this.y - 70, 1, 10);
+    }
   }
 }

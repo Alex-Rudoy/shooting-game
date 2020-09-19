@@ -1,8 +1,9 @@
+import levels from "../dictionaries/levels";
+import tutorialMessages from "../dictionaries/tutorialMessages";
+import victoryMessages from "../dictionaries/victoryMessages";
 import draw from "../logic/draw";
-import levels from "../logic/levels";
 import move from "../logic/move";
 import spawn from "../logic/spawn";
-import tutorialMessages from "../logic/tutorialMessages";
 import Player from "./Player";
 
 export default class GameStateManager {
@@ -57,12 +58,12 @@ export default class GameStateManager {
           this.victory();
         } else {
           this.startWave();
+        }
       }
-    }
 
       // game over check
       if (this.player.HP <= 0) this.gameOver();
-  }
+    }
   }
 
   buttonClickHandler(e) {

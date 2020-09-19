@@ -32,11 +32,18 @@ export default function move(gameState, f) {
       }
     });
 
+    // collision of enemies with player
     if (enemy.collideWith(player)) {
       player.takeDamage();
       enemy.takeDamage();
     }
   });
 
-  gameState.enemies = enemies.filter((enemy) => !enemy.toDestroy);
+  // remove dead enemies from game
+  gameState.enemies = enemies.filter((enemy) => {
+    if (!enemy.toDestroy) return true;
+    enemy.x = -100;
+    enemy.y = -100;
+    return false;
+  });
 }

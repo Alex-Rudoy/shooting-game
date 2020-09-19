@@ -1,11 +1,11 @@
-import images from "../logic/images";
-import Enemy from "./Enemy";
+import images from "../../../dictionaries/images";
+import Enemy from "../Enemy";
 
-export default class EnemyCircle1 extends Enemy {
+export default class EnemyWanderer extends Enemy {
   constructor(args) {
     super(args);
 
-    this.image = images.EnemyCircle1;
+    this.image = images.EnemyWanderer;
 
     this.hitbox = 20;
     this.maxSpeed = 3;
@@ -18,7 +18,7 @@ export default class EnemyCircle1 extends Enemy {
   }
 }
 
-EnemyCircle1.prototype.decision = function (player) {
+EnemyWanderer.prototype.decision = function (player) {
   let [playerAngle, playerDistance] = this.getEntityPosition(player);
   if (this.state == "chooseDirection") {
     this.moveAngle = playerAngle - Math.PI / 3 + (Math.random() * Math.PI * 2) / 3;

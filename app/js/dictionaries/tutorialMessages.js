@@ -1,4 +1,5 @@
-let tutorial = [
+let tutorialMessages = [
+  // moving
   `<h2>Use</h2>
   <div class="keys-container wasd">
     <div class="key key--empty"></div>
@@ -10,9 +11,13 @@ let tutorial = [
   </div>
   <h2>to move player in the green circle</h2>`,
 
+  // shooting
   `<h2>Use left mouse click</h2>
   <img src="../../img/mousel.png">
   <h2>to shoot the enemy</h2>`,
+
+  // fighting
+  `<h2>Kill them before they kill you!</h2>`,
 ];
 
-export default tutorial;
+export default tutorialMessages;

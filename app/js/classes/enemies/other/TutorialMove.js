@@ -1,5 +1,5 @@
-import { ctx } from "../logic/draw";
-import Enemy from "./Enemy";
+import { ctx } from "../../../logic/draw";
+import Enemy from "../Enemy";
 
 export default class TutorialMove extends Enemy {
   constructor(args) {

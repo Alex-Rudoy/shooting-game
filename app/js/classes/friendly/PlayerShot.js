@@ -1,4 +1,4 @@
-import images from "../logic/images";
+import images from "../../dictionaries/images";
 import Entity from "./Entity";
 
 export default class PlayerShot extends Entity {

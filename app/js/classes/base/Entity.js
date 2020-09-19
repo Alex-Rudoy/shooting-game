@@ -7,6 +7,7 @@ export default class Entity {
     this.toDestroy = false;
     this.moveAngle = 0;
     this.turnAngle = 0;
+    this.immune = false;
   }
 }
 
@@ -37,7 +38,13 @@ Entity.prototype.getEntityPosition = function (entity) {
 };
 
 Entity.prototype.takeDamage = function () {
-  this.HP--;
+  if (!this.immune) {
+    this.HP--;
+    this.immune = true;
+    setTimeout(() => {
+      this.immune = false;
+    }, 500);
+  }
   if (this.HP <= 0) {
     this.toDestroy = true;
   }
