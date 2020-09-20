@@ -1,3 +1,5 @@
+import Boss from "../classes/enemies/Boss";
+
 export default function move(gameState, f) {
   let { player, playerShots, enemies } = gameState;
   player.move(player.moveAngle, player.speed * f);
@@ -20,17 +22,25 @@ export default function move(gameState, f) {
   );
 
   enemies.forEach((enemy) => {
-    enemy.decision(player);
+    if (enemy.state != "followMotherShip") {
+      // regular logic
+      enemy.decision(player);
+    } else {
+      // MotherShipPets logic
+      enemy.decision(enemies[0]);
+    }
     enemy.move(enemy.moveAngle, enemy.speed * f);
 
     // collision of enemies with other enemies
-    enemies.forEach((enemy2) => {
-      if (enemy.collideWith(enemy2)) {
-        let [angle, distance] = enemy.getEntityPosition(enemy2);
-        enemy.move(angle, (distance - enemy.hitbox - enemy2.hitbox) / 2);
-        enemy2.move(angle + Math.PI, (distance - enemy.hitbox - enemy2.hitbox) / 2);
-      }
-    });
+    if (!enemy.noCollision) {
+      enemies.forEach((enemy2) => {
+        if (!enemy2.noCollision && enemy.collideWith(enemy2)) {
+          let [angle, distance] = enemy.getEntityPosition(enemy2);
+          enemy.move(angle, (distance - enemy.hitbox - enemy2.hitbox) / 2);
+          enemy2.move(angle + Math.PI, (distance - enemy.hitbox - enemy2.hitbox) / 2);
+        }
+      });
+    }
 
     // collision of enemies with player
     if (enemy.collideWith(player)) {
@@ -48,6 +58,9 @@ export default function move(gameState, f) {
   // remove dead enemies from game
   gameState.enemies = enemies.filter((enemy) => {
     if (!enemy.toDestroy) return true;
+    if (enemy instanceof Boss) {
+      gameState.victory();
+    }
     enemy.x = -100;
     enemy.y = -100;
     return false;

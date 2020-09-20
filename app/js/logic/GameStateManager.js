@@ -10,6 +10,7 @@ export default class GameStateManager {
   constructor() {
     this.screen = "menu";
 
+    // !change lvl here for testing
     this.maxlvl = localStorage.getItem("maxlvl") || 0;
     this.lvl = 0;
     this.wave = 0;
@@ -91,6 +92,7 @@ export default class GameStateManager {
     if (this.maxlvl >= lvl) {
       this.screen = "game";
       this.lvl = lvl;
+      // ! change wave here for testing
       this.wave = 0;
       this.playerShots = [];
       this.enemies = [];

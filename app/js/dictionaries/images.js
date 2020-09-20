@@ -21,4 +21,10 @@ images.EnemyWanderer.src = "../../img/EnemyWanderer.png";
 images.EnemyBully = new Image();
 images.EnemyBully.src = "../../img/EnemyBully.png";
 
+images.MotherShip = new Image();
+images.MotherShip.src = "../../img/MotherShip.png";
+
+images.MotherShipPet = new Image();
+images.MotherShipPet.src = "../../img/MotherShipPet.png";
+
 export default images;

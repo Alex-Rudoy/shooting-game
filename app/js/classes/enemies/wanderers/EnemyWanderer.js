@@ -21,9 +21,11 @@ EnemyWanderer.prototype.decision = function (player) {
     this.moveAngle = playerAngle - Math.PI / 3 + (Math.random() * Math.PI * 2) / 3;
     this.turnAngle = playerAngle;
     this.state = "move";
+
     setTimeout(() => {
       this.state = "wait";
       this.speed = 0;
+
       setTimeout(() => {
         this.state = "chooseDirection";
         this.speed = this.maxSpeed;

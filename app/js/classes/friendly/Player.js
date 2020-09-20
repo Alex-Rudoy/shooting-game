@@ -43,8 +43,8 @@ export default class Player extends Entity {
     ctx.fillRect(this.x - 50, this.y - 70, (100 / this.maxHP) * this.HP, 10);
 
     ctx.fillStyle = "black";
-    for (let i = 1; i <= this.maxHP; i++) {
-      ctx.fillRect(this.x - 50 + (100 / this.maxHP) * i, this.y - 70, 1, 10);
+    for (let i = 1; i < this.maxHP; i++) {
+      ctx.fillRect(this.x - 50 + (100 / this.maxHP) * i, this.y - 69, 1, 8);
     }
   }
 
