@@ -5,7 +5,6 @@ export default function spawn(gameState) {
   let { player, playerShots, enemies, waveTime, waveEnemies } = gameState;
 
   // player shot spawn
-  console.log(gameState.lvl, gameState.wave);
   if (player.isShooting && player.shotReady && !(!gameState.lvl && !gameState.wave)) {
     player.shotReady = false;
     setTimeout(() => (player.shotReady = true), 500);

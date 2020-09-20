@@ -22,7 +22,7 @@ export default function move(gameState, f) {
   );
 
   enemies.forEach((enemy) => {
-    if (enemy.state != "followMotherShip") {
+    if (enemy.state != "followBoss") {
       // regular logic
       enemy.decision(player);
     } else {

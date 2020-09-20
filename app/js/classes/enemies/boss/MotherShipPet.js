@@ -13,7 +13,7 @@ export default class MotherShipPet extends Enemy {
     this.rotation = args.rotation;
     this.noCollision = true;
 
-    this.state = "followMotherShip";
+    this.state = "followBoss";
 
     setTimeout(() => {
       this.state = "attack";
@@ -23,23 +23,30 @@ export default class MotherShipPet extends Enemy {
 }
 
 MotherShipPet.prototype.decision = function (target) {
-  if (this.state == "followMotherShip") {
+  if (this.state == "followBoss") {
     // target = MotherShip
     let [angle, distance] = this.getEntityPosition(target);
     this.turnAngle = angle + (Math.PI / 2 + (1 - distance / 250) * Math.PI) * this.rotation;
-    this.moveAngle = this.turnAngle;
   }
+
   if (this.state == "attack") {
     // target = player
     let [angle, distance] = this.getEntityPosition(target);
+    console.log(this.turnAngle, angle);
 
-    if (angle < 0 && this.rotation == -1) angle += Math.PI * 2;
-    if (angle > 0 && this.rotation == 1) angle -= Math.PI * 2;
-
-    if (this.turnAngle < angle) this.turnAngle += Math.PI / 100;
-    else this.turnAngle -= Math.PI / 100;
-    this.moveAngle = this.turnAngle;
+    //min angle between 0 and +2pi
+    if (angle < this.turnAngle) {
+      if (this.turnAngle - angle > 2 * Math.PI + angle - this.turnAngle) this.turnAngle += Math.PI / 100;
+      else this.turnAngle -= Math.PI / 100;
+    } else {
+      if (angle - this.turnAngle < 2 * Math.PI + this.turnAngle - angle) this.turnAngle += Math.PI / 100;
+      else this.turnAngle -= Math.PI / 100;
+    }
+    if (this.turnAngle < -Math.PI) this.turnAngle += Math.PI * 2;
+    if (this.turnAngle > Math.PI) this.turnAngle -= Math.PI * 2;
   }
+
+  this.moveAngle = this.turnAngle;
 };
 
 MotherShipPet.prototype.drawHPBar = function () {

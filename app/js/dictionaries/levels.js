@@ -96,10 +96,10 @@ let levels = [
 
     // wave 3 (1, 2)
     [
-      { enemyClass: EnemyWanderer, x: right, y: getRandom(y, mid), hp: 1, time: 15300 },
-      { enemyClass: EnemyWanderer, x: right, y: getRandom(y, mid), hp: 1, time: 15200 },
-      { enemyClass: EnemyWanderer, x: right, y: getRandom(y, mid), hp: 1, time: 15100 },
-      { enemyClass: EnemyWanderer, x: right, y: getRandom(y, mid), hp: 1, time: 15000 },
+      { enemyClass: EnemyWanderer, x: right, y: getRandom(y, mid), hp: 2, time: 15300 },
+      { enemyClass: EnemyWanderer, x: right, y: getRandom(y, mid), hp: 2, time: 15200 },
+      { enemyClass: EnemyWanderer, x: right, y: getRandom(y, mid), hp: 2, time: 15100 },
+      { enemyClass: EnemyWanderer, x: right, y: getRandom(y, mid), hp: 2, time: 15000 },
 
       { enemyClass: EnemyWanderer, x: left, y: getRandom(y, mid), hp: 2, time: 12200 },
       { enemyClass: EnemyWanderer, x: getRandom(x, mid), y: top, hp: 2, time: 12100 },
