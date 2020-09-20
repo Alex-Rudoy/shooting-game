@@ -42,6 +42,6 @@ MotherShipPet.prototype.decision = function (target) {
   }
 };
 
-Enemy.prototype.drawHPBar = function () {
+MotherShipPet.prototype.drawHPBar = function () {
   return;
 };
